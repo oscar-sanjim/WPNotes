@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPNotes.ViewModels
 {
-    class NoteModel
+    
+    public class NoteModel
     {
         /*
             Attributes
@@ -57,7 +58,7 @@ namespace WPNotes.ViewModels
         }
 
         public NoteModel(string title, string category, string body, DateTime date, Boolean featured) {
-            //Missing id
+            
             this.title = title;
             this.category = category;
             this.body = body;

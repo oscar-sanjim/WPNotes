@@ -17,12 +17,12 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="dataTemp">
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Vertical" Margin="0,0,0,20">
-                    <TextBlock Text="{Binding Title}" FontSize="35"/>
-                    <TextBlock Text="{Binding Preview}" FontSize="20" Width="auto" Padding="30,1,10,0"/>
-                </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0,0,0,20">
+                <TextBlock Text="{Binding Title}" FontSize="35"/>
+                <TextBlock Text="{Binding Preview}" FontSize="20" Width="auto" Padding="30,1,10,0"/>
             </StackPanel>
+
         </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
     
@@ -52,7 +52,7 @@
             <!--Pivot item one-->
             <phone:PivotItem Header="Todos">
                 <!--Double line list with text wrapping-->
-                <phone:LongListSelector x:Name="all" Margin="0,0,-12,0" ItemTemplate="{StaticResource dataTemp}" SelectionChanged="all_SelectionChanged">
+                <phone:LongListSelector x:Name="allNotes" Margin="0,0,-12,0" ItemTemplate="{StaticResource dataTemp}" SelectionChanged="SelectionChanged">
                 </phone:LongListSelector>
             </phone:PivotItem>
 

@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using WPNotes.Resources;
+using WPNotes.ViewModels;
 
 namespace WPNotes
 {
@@ -28,7 +29,7 @@ namespace WPNotes
                     DateTime.Today, true
                     ));
 
-            all.ItemsSource = allList;        
+            allNotes.ItemsSource = allList;        
             
 
             // Sample code to localize the ApplicationBar
@@ -49,15 +50,24 @@ namespace WPNotes
 
         }
 
-        private void all_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
+        // When element in the list is clicked
+        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LongListSelector lls = sender as LongListSelector;
+            NoteModel noteData = (NoteModel)lls.SelectedItem;
+
+            String id = noteData.Id;
+
+            NavigationService.Navigate(new Uri("/NewNote.xaml?id="+id, UriKind.Relative));
         }
 
+        //Action Button for adding new note
         private void ApplicationBarIconButton_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/NewNote.xaml", UriKind.Relative));
         }
+        
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
