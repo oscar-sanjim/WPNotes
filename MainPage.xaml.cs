@@ -23,11 +23,19 @@ namespace WPNotes
 
             allList = new List<ViewModels.NoteModel>();
 
+            Lista lst = new Lista();
+
             for(int i= 0; i<8; i++)
-                allList.Add(new ViewModels.NoteModel("Prueba", "Todos",
-                    "Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba",
-                    DateTime.Today, true
-                    ));
+                    allList.Add(new ViewModels.NoteModel("Prueba", "Todos",
+                     "Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba",
+                     DateTime.Today, true
+            ));
+
+            foreach (NoteModel nm in allList)
+            {
+                lst.Agregar(nm);
+            }    
+
 
             allNotes.ItemsSource = allList;        
             
