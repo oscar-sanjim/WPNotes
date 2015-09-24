@@ -143,6 +143,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Icons\add.png" />
+    <Content Include="Assets\Icons\delete.png" />
+    <Content Include="Assets\Icons\save.png" />
+    <Content Include="Assets\Icons\share.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

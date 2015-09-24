@@ -23,7 +23,7 @@ namespace WPNotes
             get {
                 if (dataContext == null)
                 {
-                    dataContext = new NoteDataContext("isostore:/post.sdf");
+                    dataContext = new NoteDataContext("isostore:/notemodel.sdf");
 
                     if (!dataContext.DatabaseExists()) {
                         dataContext.CreateDatabase();

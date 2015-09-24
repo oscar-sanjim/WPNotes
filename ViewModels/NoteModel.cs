@@ -112,6 +112,10 @@ namespace WPNotes.ViewModels
 
         }
 
-        
+        public override string ToString()
+        {
+            return id + ", " + title + ", " + category ;
+        }
+
     }
 }

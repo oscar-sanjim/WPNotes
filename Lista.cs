@@ -8,7 +8,7 @@ using WPNotes.ViewModels;
 
 namespace WPNotes
 {
-    public class Lista
+    public class DBController
     {
         ObservableCollection<NoteModel> notes = null;
 
@@ -28,7 +28,7 @@ namespace WPNotes
         }
 
         public void Cargar() {
-            var query = from notes in NoteDataContext.Current.WPNotes orderby notes.Id select notes;
+            var query = from notes in NoteDataContext.Current.WPNotes orderby notes.Date select notes;
             WPNotes = new ObservableCollection<NoteModel>(query.ToList());                         
         }
 
@@ -46,6 +46,38 @@ namespace WPNotes
                 NoteDataContext.Current.WPNotes.InsertOnSubmit(note);
                 NoteDataContext.Current.SubmitChanges();
             }
+            else
+            {
+                NoteDataContext.Current.WPNotes.DeleteOnSubmit(nt);
+                NoteDataContext.Current.SubmitChanges();
+                NoteDataContext.Current.WPNotes.InsertOnSubmit(note);
+                NoteDataContext.Current.SubmitChanges();
+            }
+        }
+
+        public List<NoteModel> GetCategoryNotes(string category)
+        {
+            var query = from notes in NoteDataContext.Current.WPNotes orderby notes.Date where notes.Category == category select notes;
+            return query.ToList();
+        }
+
+        public List<NoteModel> GetFeaturedNotes()
+        {
+            var query = from notes in NoteDataContext.Current.WPNotes orderby notes.Date where notes.Featured == true select notes;
+            return query.ToList();
+        }
+
+        public NoteModel GetNoteInfo(string id)
+        {
+            var query = from notes in NoteDataContext.Current.WPNotes orderby notes.Date where notes.Id == id select notes;
+            return query.Single();
+        }
+
+        public void DeleteNote(string id)
+        {
+            var query = from notes in NoteDataContext.Current.WPNotes where notes.Id == id select notes;
+            NoteDataContext.Current.WPNotes.DeleteOnSubmit(query.Single());
+            NoteDataContext.Current.SubmitChanges();
         }
     }
 }

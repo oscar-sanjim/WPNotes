@@ -14,43 +14,42 @@ namespace WPNotes
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        List<ViewModels.NoteModel> allList;
+        
 
         // Constructor
         public MainPage()
         {
             InitializeComponent();
 
-            allList = new List<ViewModels.NoteModel>();
-
-            Lista lst = new Lista();
-
-            for(int i= 0; i<8; i++)
-                    allList.Add(new ViewModels.NoteModel("Prueba", "Todos",
-                     "Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba, Esto es una prueba",
-                     DateTime.Today, true
-            ));
-
-            foreach (NoteModel nm in allList)
-            {
-                lst.Agregar(nm);
-            }    
+            List<NoteModel> allList = new List<NoteModel>();
+            List<NoteModel> featuredList = new List<NoteModel>();
+            List<NoteModel> workList = new List<NoteModel>();
+            List<NoteModel> personalList = new List<NoteModel>();
 
 
-            allNotes.ItemsSource = allList;        
-            
+            DBController lst = new DBController();
 
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            personalList = lst.GetCategoryNotes("Personal");
+            personal.ItemsSource = personalList;
+
+            workList = lst.GetCategoryNotes("Trabajo");
+            work.ItemsSource = workList;
+
+            featuredList = lst.GetFeaturedNotes();
+            featured.ItemsSource = featuredList;
+
+            allList = lst.WPNotes.ToList();
+            allNotes.ItemsSource = allList;
         }
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
+            DBController lst = new DBController();
+            allNotes.ItemsSource = lst.WPNotes.ToList();
+            personal.ItemsSource = lst.GetFeaturedNotes();
+            work.ItemsSource = lst.GetCategoryNotes("Trabajo");
+            personal.ItemsSource = lst.GetCategoryNotes("Personal");
         }
 
         private void Pivot_Loaded(object sender, RoutedEventArgs e)

@@ -56,7 +56,25 @@
                 </phone:LongListSelector>
             </phone:PivotItem>
 
-            
+            <phone:PivotItem Header="Destacados">
+                <!--Double line list with text wrapping-->
+                <phone:LongListSelector x:Name="featured" Margin="0,0,-12,0" ItemTemplate="{StaticResource dataTemp}" SelectionChanged="SelectionChanged">
+                </phone:LongListSelector>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="Trabajo">
+                <!--Double line list with text wrapping-->
+                <phone:LongListSelector x:Name="work" Margin="0,0,-12,0" ItemTemplate="{StaticResource dataTemp}" SelectionChanged="SelectionChanged">
+                </phone:LongListSelector>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="Personal">
+                <!--Double line list with text wrapping-->
+                <phone:LongListSelector x:Name="personal" Margin="0,0,-12,0" ItemTemplate="{StaticResource dataTemp}" SelectionChanged="SelectionChanged">
+                </phone:LongListSelector>
+            </phone:PivotItem>
+
+
         </phone:Pivot>
 
             <!--Uncomment to see an alignment grid to help ensure your controls are

@@ -29,9 +29,24 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBox x:Name="title" HorizontalAlignment="Left" Height="76" Margin="10,0,0,0" TextWrapping="Wrap" Text="Título" VerticalAlignment="Top" Width="446" GotFocus="clearTextBox"/>
+            <TextBox x:Name="title" HorizontalAlignment="Left" Height="76" Margin="10,0,0,0" TextWrapping="Wrap" Text="Título" VerticalAlignment="Top" Width="381" GotFocus="clearTextBox"/>
             <TextBox x:Name="body" Height="377" Margin="10,146,0,0" TextWrapping="Wrap" Text="Nota..." VerticalAlignment="Top" GotFocus="clearTextBox"/>
-            <CheckBox x:Name="featured" Content="Destacado" HorizontalAlignment="Left" Margin="282,69,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="featured" Content="Destacado" HorizontalAlignment="Left" Margin="282,69,0,0" VerticalAlignment="Top" IsThreeState="False"/>
+            <Button x:Name="savebutton" Content="" HorizontalAlignment="Left" Margin="300,529,0,-5" VerticalAlignment="Top" Click="savebutton_Click" Height="99" Width="95" BorderThickness="0">
+                <Button.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Icons/save.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="deleteButton" Content="" HorizontalAlignment="Left" Margin="370,526,-30,-7" VerticalAlignment="Top" Click="deleteButton_Click" Width="116" BorderThickness="0" Height="104" >
+                <Button.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Icons/delete.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="shareButton" Content="" HorizontalAlignment="Left" Margin="381,0,-5,0" VerticalAlignment="Top" Height="76" Width="80" Click="shareButton_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Icons/share.png"/>
+                </Button.Background>
+            </Button>
             <toolkit:ListPicker x:Name="category" Margin="22,71,220,100" >
                 <toolkit:ListPickerItem x:Name="personal" Content="Personal" Margin="37,0,-37,0"/>
                 <toolkit:ListPickerItem x:Name="work" Content="Trabajo" Margin="37,0,-37,0"/>
